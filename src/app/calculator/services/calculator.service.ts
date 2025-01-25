@@ -67,15 +67,13 @@ export class CalculatorService {
 
     // Limitar número de caracteres
     if (this.resultText().length >= this.maxNumberAllowed) {
-      console.error(
-        `Max length reached. Max limit of numbers allowed ${this.maxNumberAllowed}.`
-      );
+      console.error(`Max length reached. Max limit of numbers allowed ${this.maxNumberAllowed}.`);
       return;
     }
 
     // Validar punto decimal
     if (value === '.' && !this.resultText().includes('.')) {
-      if (this.resultText() === '0') {
+      if (this.resultText() === '0' || this.resultText() === '') {
         this.resultText.set('0.');
         return;
       }
@@ -85,10 +83,7 @@ export class CalculatorService {
     }
 
     // Manejo del cero inicial
-    if (
-      value === '0' &&
-      (this.resultText() === '0' || this.resultText() === '-0')
-    ) {
+    if (value === '0' && (this.resultText() === '0' || this.resultText() === '-0')) {
       return;
     }
 

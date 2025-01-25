@@ -36,14 +36,12 @@ export class CalculatorButtonComponent {
   // InputSignal
   public isCommand = input(false, {
     // Esta funcion se ejecuta antes de que nuestro componente se construya
-    transform: (value: boolean | string) =>
-      typeof value === 'string' ? value === '' : value,
+    transform: (value: boolean | string) => (typeof value === 'string' ? value === '' : value),
   });
 
   // InputSignal
   public isDoubleSize = input(false, {
-    transform: (value: boolean | string) =>
-      typeof value === 'string' ? value === '' : value,
+    transform: (value: boolean | string) => (typeof value === 'string' ? value === '' : value),
   });
 
   public isPressed = signal(false);
@@ -51,7 +49,7 @@ export class CalculatorButtonComponent {
   // Nueva forma recomendada para emitir valores
   public onClick: OutputEmitterRef<string> = output<string>();
 
-  // NUeva forma de acceder a los hijos de un componente
+  // Nueva forma de acceder a los hijos de un componente
   public contentValue = viewChild<ElementRef<HTMLButtonElement>>('button');
 
   /**
@@ -80,7 +78,7 @@ export class CalculatorButtonComponent {
     this.onClick.emit(value.trim());
   }
 
-  public keyboardPressedStyle(key: string) {
+  keyboardPressedStyle(key: string) {
     if (!this.contentValue()) return;
 
     const value = this.contentValue()?.nativeElement.innerText;

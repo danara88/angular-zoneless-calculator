@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  inject,
-  viewChildren,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, viewChildren } from '@angular/core';
 import { CalculatorButtonComponent } from '../calculator-button/calculator-button.component';
 import { CalculatorService } from '@/calculator/services/calculator.service';
 
@@ -47,7 +41,6 @@ export default class CalculatorComponent {
    * @description Handles logic when a calculator button is clicked
    */
   handleClick(key: string) {
-    console.log(key);
     this.calculatorService.constructNumber(key);
   }
 
